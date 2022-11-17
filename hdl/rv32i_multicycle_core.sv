@@ -71,4 +71,63 @@ alu_behavioural ALU (
 
 // Implement your multicycle rv32i CPU here!
 
+
+always_ff @(posedge clk) begin
+  if (rst) begin
+    PC_next <= 32'b0;
+  end
+end
+
+// TODO: set PC. was having an l-value error. Apparently we're not allowed to store state (from an ff) on a wire
+// this is why PC_next exists, we may need to wire PC to PC_next?
+// always_comb begin
+//   PC = PC_next;
+// end
+
+always_comb begin
+  mem_addr = PC_next; // TODO: not hardwire PC = mem_addr so we can do reads and writes other than INST_RAM
+  $display("mem_rd_data %b", mem_rd_data);
+end
+
+always_ff @(posedge clk) begin
+  case(mem_rd_data[6:0]) 
+    OP_RTYPE : begin
+      case(mem_rd_data[14:12]) 
+        FUNCT3_ADD : begin
+
+          // TODO: make a FSM such that reading and writing from the MMU and ALU are not on the same clock cycle
+          // see textbook on multicycle 
+
+          $display("add %b, %b, %b", mem_rd_data[11:7], mem_rd_data[19:15], mem_rd_data[24:20]);
+
+          rs1 <= mem_rd_data[19:15];
+          rs2 <= mem_rd_data[24:20];
+          $display("register vals %b, %b", reg_data1, reg_data2);
+
+          src_a <= reg_data1;
+          src_b <= reg_data2;
+          alu_control <= ALU_ADD;
+          $display("alu_result %b", alu_result);
+
+          // rd <= mem_rd_data[11:7];
+          // rfile_wr_data <= alu_result;
+          // reg_write <= 1'b1;
+
+        end
+        default : begin
+          $display("mem_rd_data[14:12] case: default");
+        end
+      endcase
+    end
+    default : begin
+      $display("mem_rd_data[6:0] case: default");
+    end
+  endcase
+end
+
+// mem_rd_data, mem_wr_data, mem_wr_ena
+// output logic [31:0] mem_addr, mem_wr_data;
+// input   wire [31:0] mem_rd_data;
+// output logic mem_wr_ena;
+
 endmodule
