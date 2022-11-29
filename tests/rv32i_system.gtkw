@@ -1,20 +1,20 @@
 [*]
 [*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
-[*] Tue Nov 29 00:55:16 2022
+[*] Tue Nov 29 02:58:18 2022
 [*]
 [dumpfile] "/home/lilo/Documents/RISC-V-CPU/rv32i_system.fst"
-[dumpfile_mtime] "Tue Nov 29 00:54:28 2022"
-[dumpfile_size] 5350
+[dumpfile_mtime] "Tue Nov 29 02:56:17 2022"
+[dumpfile_size] 6051
 [savefile] "/home/lilo/Documents/RISC-V-CPU/tests/rv32i_system.gtkw"
-[timestart] 0
+[timestart] 95500
 [size] 1294 704
 [pos] -1 -1
-*-16.439722 65000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-16.652710 275000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test_rv32i_system.
 [treeopen] test_rv32i_system.UUT.
 [treeopen] test_rv32i_system.UUT.CORE.
 [treeopen] test_rv32i_system.UUT.MMU.
-[sst_width] 459
+[sst_width] 233
 [signals_width] 290
 [sst_expanded] 1
 [sst_vpaned_height] 303
@@ -22,14 +22,27 @@
 test_rv32i_system.UUT.CORE.rst
 test_rv32i_system.UUT.CORE.clk
 test_rv32i_system.UUT.CORE.PC_ena
-@22
-test_rv32i_system.UUT.CORE.PC[31:0]
 @24
 test_rv32i_system.UUT.CORE.state[2:0]
-@25
+@22
+test_rv32i_system.UUT.CORE.PC[31:0]
+test_rv32i_system.UUT.CORE.mem_rd_data[31:0]
+test_rv32i_system.UUT.CORE.ir[31:0]
+test_rv32i_system.UUT.CORE.alu_result[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x00[31:0]
+@24
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x01[31:0]
 @22
-test_rv32i_system.UUT.CORE.alu_result[31:0]
-test_rv32i_system.UUT.CORE.mem_rd_data[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x02[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x03[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x04[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x05[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x06[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x07[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x08[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x09[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x10[31:0]
+@23
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x11[31:0]
 [pattern_trace] 1
 [pattern_trace] 0

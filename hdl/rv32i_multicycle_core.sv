@@ -105,13 +105,13 @@ always_ff @(posedge clk) begin
     MEM_ADDR : begin
       case(ir[6:0]) // ir[6:0] is the op code
         OP_RTYPE : begin
-          $display("MEM_ADDR OP_RTYPE: add rd=%d, rs1=%d, rs2=%d", ir[11:7], ir[19:15], ir[24:20]);
+          $display("MEM_ADDR OP_RTYPE: rd=%d, rs1=%d, rs2=%d", ir[11:7], ir[19:15], ir[24:20]);
           rs1 <= ir[19:15];
           rs2 <= ir[24:20];
           state <= EXECUTE_R;
         end
         OP_ITYPE : begin
-          $display("MEM_ADDR OP_ITYPE: addi rd=%d, rs1=%d, imm=%d", ir[11:7], ir[19:15], ir[31:20]);
+          $display("MEM_ADDR OP_ITYPE: rd=%d, rs1=%d, imm=%d", ir[11:7], ir[19:15], ir[31:20]);
           rs1 <= ir[19:15];
           state <= EXECUTE_I;
         end
@@ -127,12 +127,40 @@ always_ff @(posedge clk) begin
 
       case(ir[14:12]) // ir[14:12] is the funct3 code
         FUNCT3_ADD : begin
-          $display("EXECUTE_R case: ALU_ADD");
+          $display("EXECUTE_R case: ADD");
           alu_control <= ALU_ADD;
+        end
+        FUNCT3_SLL : begin
+          $display("EXECUTE_R case: SLL");
+          alu_control <= ALU_SLL;
+        end
+        FUNCT3_SLT : begin
+          $display("EXECUTE_R case: SLT");
+          alu_control <= ALU_SLT;
+        end
+        FUNCT3_SLTU : begin
+          $display("EXECUTE_R case: SLTU");
+          alu_control <= ALU_SLTU;
+        end
+        FUNCT3_XOR : begin
+          $display("EXECUTE_R case: XOR");
+          alu_control <= ALU_XOR;
+        end
+        FUNCT3_SHIFT_RIGHT : begin // Needs a funct7 bit to determine!
+          $display("EXECUTE_R case: SHIFT_RIGHT");
+          alu_control <= ALU_SRA; // TODO: should this be SRA? SRL? something else?
+        end
+        FUNCT3_OR : begin
+          $display("EXECUTE_R case: OR");
+          alu_control <= ALU_OR;
+        end
+        FUNCT3_AND : begin
+          $display("EXECUTE_R case: AND");
+          alu_control <= ALU_AND;
         end
         default : begin
           $display("EXECUTE_R case: default");
-          // alu_control <= WHAT?; // TODO: figure out what to put here
+          alu_control <= ALU_INVALID;
         end
       endcase
 
@@ -145,12 +173,40 @@ always_ff @(posedge clk) begin
       
       case(ir[14:12]) // ir[14:12] is the funct3 code
         FUNCT3_ADD : begin
-          $display("EXECUTE_I case: ALU_ADD");
+          $display("EXECUTE_I case: ADD");
           alu_control <= ALU_ADD;
+        end
+        FUNCT3_SLL : begin
+          $display("EXECUTE_I case: SLL");
+          alu_control <= ALU_SLL;
+        end
+        FUNCT3_SLT : begin
+          $display("EXECUTE_I case: SLT");
+          alu_control <= ALU_SLT;
+        end
+        FUNCT3_SLTU : begin
+          $display("EXECUTE_I case: SLTU");
+          alu_control <= ALU_SLTU;
+        end
+        FUNCT3_XOR : begin
+          $display("EXECUTE_I case: XOR");
+          alu_control <= ALU_XOR;
+        end
+        FUNCT3_SHIFT_RIGHT : begin // Needs a funct7 bit to determine!
+          $display("EXECUTE_I case: SHIFT_RIGHT");
+          alu_control <= ALU_SRA; // TODO: should this be SRA? SRL? something else?
+        end
+        FUNCT3_OR : begin
+          $display("EXECUTE_I case: OR");
+          alu_control <= ALU_OR;
+        end
+        FUNCT3_AND : begin
+          $display("EXECUTE_I case: AND");
+          alu_control <= ALU_AND;
         end
         default : begin
           $display("EXECUTE_I case: default");
-          // alu_control <= WHAT?; // TODO: figure out what to put here
+          alu_control <= ALU_INVALID;
         end
       endcase
 
