@@ -5,7 +5,8 @@
 
 module test_rv32i_system;
 
-localparam MAX_CYCLES = 100_000;
+// localparam MAX_CYCLES = 100_000;
+localparam MAX_CYCLES = 100;
 
 logic sysclk;
 logic [1:0] buttons;
