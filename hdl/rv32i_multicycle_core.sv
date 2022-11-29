@@ -91,9 +91,11 @@ always_ff @(posedge clk) begin
   // TODO 11/28: skipping addi 7 again and weird behaviour on non-add commands
   // theory: error with defaults
   // last thing changed: just restructured FSM so look at state routing
+  // UPDATE: mostly fixed, but look at comparison of alu_result and registers again. 
 
   case(state)
     FETCH : begin
+      $display("");
       $display("FETCH: mem_rd_data %b", mem_rd_data);
       ir <= mem_rd_data; // ir = instruction register
 
@@ -125,45 +127,39 @@ always_ff @(posedge clk) begin
       src_a <= reg_data1;
       src_b <= reg_data2;
 
+      // TODO: the R & I case statements are identical. take advantage of this?
+      // move case statement into mem_addr: "if Itype or Rtype, do this to set alu_control"?
+
       case(ir[14:12]) // ir[14:12] is the funct3 code
         FUNCT3_ADD : begin
-          $display("EXECUTE_R case: ADD");
           alu_control <= ALU_ADD;
         end
         FUNCT3_SLL : begin
-          $display("EXECUTE_R case: SLL");
           alu_control <= ALU_SLL;
         end
         FUNCT3_SLT : begin
-          $display("EXECUTE_R case: SLT");
           alu_control <= ALU_SLT;
         end
         FUNCT3_SLTU : begin
-          $display("EXECUTE_R case: SLTU");
           alu_control <= ALU_SLTU;
         end
         FUNCT3_XOR : begin
-          $display("EXECUTE_R case: XOR");
           alu_control <= ALU_XOR;
         end
         FUNCT3_SHIFT_RIGHT : begin // Needs a funct7 bit to determine!
-          $display("EXECUTE_R case: SHIFT_RIGHT");
-          alu_control <= ALU_SRA; // TODO: should this be SRA? SRL? something else?
+          alu_control <= ALU_SRA; // TODO: should this be SRA? SRL? 
         end
         FUNCT3_OR : begin
-          $display("EXECUTE_R case: OR");
           alu_control <= ALU_OR;
         end
         FUNCT3_AND : begin
-          $display("EXECUTE_R case: AND");
           alu_control <= ALU_AND;
         end
         default : begin
-          $display("EXECUTE_R case: default");
           alu_control <= ALU_INVALID;
         end
       endcase
-
+      $display("EXECUTE_R: alu_control=%s", alu_control_name(alu_control));
       state <= ALU_WRITEBACK;
     end
     EXECUTE_I : begin
@@ -173,43 +169,34 @@ always_ff @(posedge clk) begin
       
       case(ir[14:12]) // ir[14:12] is the funct3 code
         FUNCT3_ADD : begin
-          $display("EXECUTE_I case: ADD");
           alu_control <= ALU_ADD;
         end
         FUNCT3_SLL : begin
-          $display("EXECUTE_I case: SLL");
           alu_control <= ALU_SLL;
         end
         FUNCT3_SLT : begin
-          $display("EXECUTE_I case: SLT");
           alu_control <= ALU_SLT;
         end
         FUNCT3_SLTU : begin
-          $display("EXECUTE_I case: SLTU");
           alu_control <= ALU_SLTU;
         end
         FUNCT3_XOR : begin
-          $display("EXECUTE_I case: XOR");
           alu_control <= ALU_XOR;
         end
         FUNCT3_SHIFT_RIGHT : begin // Needs a funct7 bit to determine!
-          $display("EXECUTE_I case: SHIFT_RIGHT");
-          alu_control <= ALU_SRA; // TODO: should this be SRA? SRL? something else?
+          alu_control <= ALU_SRA; // TODO: should this be SRA? SRL? 
         end
         FUNCT3_OR : begin
-          $display("EXECUTE_I case: OR");
           alu_control <= ALU_OR;
         end
         FUNCT3_AND : begin
-          $display("EXECUTE_I case: AND");
           alu_control <= ALU_AND;
         end
         default : begin
-          $display("EXECUTE_I case: default");
           alu_control <= ALU_INVALID;
         end
       endcase
-
+      $display("EXECUTE_I: alu_control=%s", alu_control_name(alu_control));
       state <= ALU_WRITEBACK;
     end
     ALU_WRITEBACK : begin
