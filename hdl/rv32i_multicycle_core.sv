@@ -77,105 +77,92 @@ always_comb begin
   mem_addr = PC; // TODO: not hardwire PC = mem_addr so we can do reads and writes other than INST_RAM
 end
 
-enum logic [2:0] {READ_PARSE, ALU_INPUT, WRITE} state;
+enum logic [2:0] {FETCH, MEM_ADDR, EXECUTE_R, EXECUTE_I, ALU_WRITEBACK} state;
 
 always_ff @(posedge clk) begin
   if (rst) begin
+    // TODO: probably shouldn't do enables in rst
     PC_ena = 1'b1;
+    reg_write <= 1'b1; // write enable for register file
     PC_next <= 32'b0;
-    state <= READ_PARSE;
+    state <= FETCH;
   end
 
-  case(mem_rd_data[6:0]) // mem_rd_data[6:0] is the op code
-    OP_RTYPE : begin
-      case(mem_rd_data[14:12]) // mem_rd_data[14:12] is the funct3 code
-        FUNCT3_ADD : begin
+  // TODO 11/28: skipping addi 7 again and weird behaviour on non-add commands
+  // theory: error with defaults
+  // last thing changed: just restructured FSM so look at state routing
 
-          case(state)
-            READ_PARSE : begin
-              $display("READ_PARSE: mem_rd_data %b", mem_rd_data);
-              ir <= mem_rd_data;
+  case(state)
+    FETCH : begin
+      $display("FETCH: mem_rd_data %b", mem_rd_data);
+      ir <= mem_rd_data; // ir = instruction register
 
-              $display("READ_PARSE: add rd=%b, rs1=%b, rs2=%b", mem_rd_data[11:7], mem_rd_data[19:15], mem_rd_data[24:20]);
-              rs1 <= mem_rd_data[19:15];
-              rs2 <= mem_rd_data[24:20];
-              state <= ALU_INPUT;
+      $display("FETCH: PC=%b", PC);
+      PC_next <= PC + 4;
 
-              $display("INC_PC: PC=%b", PC);
-              PC_next <= PC + 4;
-            end
-            ALU_INPUT : begin
-              $display("ALU_INPUT: register rs1=%b, rs2=%b", reg_data1, reg_data2);
-              src_a <= reg_data1;
-              src_b <= reg_data2;
-              alu_control <= ALU_ADD;
-              state <= WRITE;
-            end
-            WRITE : begin
-              $display("WRITE: alu_result=%b", alu_result);
-              rd <= ir[11:7];
-              rfile_wr_data <= alu_result;
-              reg_write <= 1'b1;
-              state <= READ_PARSE;
-            end
-            default : begin
-              $display("case: default");
-            end
-          endcase
-
+      state <= MEM_ADDR;
+    end
+    MEM_ADDR : begin
+      case(mem_rd_data[6:0]) // mem_rd_data[6:0] is the op code
+        OP_RTYPE : begin
+          $display("MEM_ADDR OP_RTYPE: add rd=%b, rs1=%b, rs2=%b", mem_rd_data[11:7], mem_rd_data[19:15], mem_rd_data[24:20]);
+          rs1 <= mem_rd_data[19:15];
+          rs2 <= mem_rd_data[24:20];
+          state <= EXECUTE_R;
+        end
+        OP_ITYPE : begin
+          $display("MEM_ADDR OP_ITYPE: addi rd=%b, rs1=%b, imm=%b", mem_rd_data[11:7], mem_rd_data[19:15], mem_rd_data[31:20]);
+          rs1 <= mem_rd_data[19:15];
+          state <= EXECUTE_I;
         end
         default : begin
-          $display("mem_rd_data[14:12] case: default");
+          $display("MEM_ADDR optype case: default");
         end
       endcase
     end
-    OP_ITYPE : begin
+    EXECUTE_R : begin
+      $display("EXECUTE_R: register rs1=%b, rs2=%b", reg_data1, reg_data2);
+      src_a <= reg_data1;
+      src_b <= reg_data2;
 
       case(mem_rd_data[14:12]) // mem_rd_data[14:12] is the funct3 code
         FUNCT3_ADD : begin
-
-          case(state)
-            READ_PARSE : begin
-              $display("READ_PARSE: mem_rd_data %b", mem_rd_data);
-              ir <= mem_rd_data;
-
-              $display("READ_PARSE: addi rd=%b, rs1=%b, imm=%b", mem_rd_data[11:7], mem_rd_data[19:15], mem_rd_data[31:20]);
-              rs1 <= mem_rd_data[19:15];
-              state <= ALU_INPUT;
-
-              $display("INC_PC: PC=%b", PC);
-              PC_next <= PC + 4;
-
-            end
-            ALU_INPUT : begin
-              $display("ALU_INPUT: register rs1=%b", reg_data1);
-              src_a <= reg_data1;
-              src_b <= mem_rd_data[31:20]; // the immediate imm 
-              alu_control <= ALU_ADD;
-              state <= WRITE;
-            end
-            WRITE : begin
-              $display("WRITE: alu_result=%b", alu_result);
-              rd <= ir[11:7];
-              rfile_wr_data <= alu_result;
-              reg_write <= 1'b1;
-              state <= READ_PARSE;
-            end
-            default : begin
-              $display("case: default");
-            end
-          endcase
-
+          alu_control <= ALU_ADD;
         end
         default : begin
-          $display("mem_rd_data[14:12] case: default");
+          $display("EXECUTE_R case: default");
         end
       endcase
+
+      state <= ALU_WRITEBACK;
+    end
+    EXECUTE_I : begin
+      $display("EXECUTE_I: register rs1=%b", reg_data1);
+      src_a <= reg_data1;
+      src_b <= mem_rd_data[31:20]; // the immediate imm 
+      
+      case(mem_rd_data[14:12]) // mem_rd_data[14:12] is the funct3 code
+        FUNCT3_ADD : begin
+          alu_control <= ALU_ADD;
+        end
+        default : begin
+          $display("EXECUTE_I case: default");
+        end
+      endcase
+
+      state <= ALU_WRITEBACK;
+    end
+    ALU_WRITEBACK : begin
+      $display("ALU_WRITEBACK: alu_result=%b", alu_result);
+      rd <= ir[11:7];
+      rfile_wr_data <= alu_result;
+      state <= FETCH;
     end
     default : begin
-      $display("mem_rd_data[6:0] case: default");
+      $display("state case: default");
     end
   endcase
+
 end
 
 // mem_rd_data, mem_wr_data, mem_wr_ena
