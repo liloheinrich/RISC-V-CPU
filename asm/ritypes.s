@@ -1,5 +1,5 @@
 add x1, x0, x0
-add x1, x0, x0
+add x1, x1, x0
 addi x1, x0, 7
 addi x1, x0, 6
 addi x1, x0, 5

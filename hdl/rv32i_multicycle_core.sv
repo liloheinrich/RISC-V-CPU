@@ -97,22 +97,22 @@ always_ff @(posedge clk) begin
       $display("FETCH: mem_rd_data %b", mem_rd_data);
       ir <= mem_rd_data; // ir = instruction register
 
-      $display("FETCH: PC=%b", PC);
+      $display("FETCH: PC=%d", PC);
       PC_next <= PC + 4;
 
       state <= MEM_ADDR;
     end
     MEM_ADDR : begin
-      case(mem_rd_data[6:0]) // mem_rd_data[6:0] is the op code
+      case(ir[6:0]) // ir[6:0] is the op code
         OP_RTYPE : begin
-          $display("MEM_ADDR OP_RTYPE: add rd=%b, rs1=%b, rs2=%b", mem_rd_data[11:7], mem_rd_data[19:15], mem_rd_data[24:20]);
-          rs1 <= mem_rd_data[19:15];
-          rs2 <= mem_rd_data[24:20];
+          $display("MEM_ADDR OP_RTYPE: add rd=%d, rs1=%d, rs2=%d", ir[11:7], ir[19:15], ir[24:20]);
+          rs1 <= ir[19:15];
+          rs2 <= ir[24:20];
           state <= EXECUTE_R;
         end
         OP_ITYPE : begin
-          $display("MEM_ADDR OP_ITYPE: addi rd=%b, rs1=%b, imm=%b", mem_rd_data[11:7], mem_rd_data[19:15], mem_rd_data[31:20]);
-          rs1 <= mem_rd_data[19:15];
+          $display("MEM_ADDR OP_ITYPE: addi rd=%d, rs1=%d, imm=%d", ir[11:7], ir[19:15], ir[31:20]);
+          rs1 <= ir[19:15];
           state <= EXECUTE_I;
         end
         default : begin
@@ -121,39 +121,43 @@ always_ff @(posedge clk) begin
       endcase
     end
     EXECUTE_R : begin
-      $display("EXECUTE_R: register rs1=%b, rs2=%b", reg_data1, reg_data2);
+      $display("EXECUTE_R: register rs1 data=%d, rs2 data=%d", reg_data1, reg_data2);
       src_a <= reg_data1;
       src_b <= reg_data2;
 
-      case(mem_rd_data[14:12]) // mem_rd_data[14:12] is the funct3 code
+      case(ir[14:12]) // ir[14:12] is the funct3 code
         FUNCT3_ADD : begin
+          $display("EXECUTE_R case: ALU_ADD");
           alu_control <= ALU_ADD;
         end
         default : begin
           $display("EXECUTE_R case: default");
+          // alu_control <= WHAT?; // TODO: figure out what to put here
         end
       endcase
 
       state <= ALU_WRITEBACK;
     end
     EXECUTE_I : begin
-      $display("EXECUTE_I: register rs1=%b", reg_data1);
+      $display("EXECUTE_I: register rs1 data=%d imm=%d", reg_data1, ir[31:20]);
       src_a <= reg_data1;
-      src_b <= mem_rd_data[31:20]; // the immediate imm 
+      src_b <= ir[31:20]; // the immediate imm 
       
-      case(mem_rd_data[14:12]) // mem_rd_data[14:12] is the funct3 code
+      case(ir[14:12]) // ir[14:12] is the funct3 code
         FUNCT3_ADD : begin
+          $display("EXECUTE_I case: ALU_ADD");
           alu_control <= ALU_ADD;
         end
         default : begin
           $display("EXECUTE_I case: default");
+          // alu_control <= WHAT?; // TODO: figure out what to put here
         end
       endcase
 
       state <= ALU_WRITEBACK;
     end
     ALU_WRITEBACK : begin
-      $display("ALU_WRITEBACK: alu_result=%b", alu_result);
+      $display("ALU_WRITEBACK: alu_result=%d", alu_result);
       rd <= ir[11:7];
       rfile_wr_data <= alu_result;
       state <= FETCH;
@@ -164,10 +168,5 @@ always_ff @(posedge clk) begin
   endcase
 
 end
-
-// mem_rd_data, mem_wr_data, mem_wr_ena
-// output logic [31:0] mem_addr, mem_wr_data;
-// input   wire [31:0] mem_rd_data;
-// output logic mem_wr_ena;
 
 endmodule
