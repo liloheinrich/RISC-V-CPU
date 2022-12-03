@@ -62,21 +62,24 @@ alu_behavioural ALU (
 
 // Implement your multicycle rv32i CPU here!
 
+
 //  an example of how to make named inputs for a mux:
-enum logic {MEM_SRC_PC, MEM_SRC_RESULT} mem_src;
-always_comb begin : memory_read_address_mux
-  case(mem_src)
-    MEM_SRC_RESULT : mem_addr = alu_result;
-    MEM_SRC_PC : mem_addr = PC;
-    default: mem_addr = 0;
-  endcase
+/*
+    enum logic {MEM_SRC_PC, MEM_SRC_RESULT} mem_src;
+    always_comb begin : memory_read_address_mux
+      case(mem_src)
+        MEM_SRC_RESULT : mem_addr = alu_result;
+        MEM_SRC_PC : mem_addr = PC;
+        default: mem_addr = 0;
+    end
+*/
+always_comb begin
+  mem_addr = PC; // TODO: not hardwire PC = mem_addr so we can do reads and writes other than INST_RAM
 end
 
-// always_comb begin
-//   mem_addr = PC; // TODO: not hardwire PC = mem_addr so we can do reads and writes other than INST_RAM
-// end
+enum logic [2:0] {FETCH, MEM_ADDR, EXECUTE_R, EXECUTE_I, ALU_WRITEBACK} state;
 
-enum logic [2:0] {FETCH, MEM_ADDR, EXECUTE_R, EXECUTE_I, READ_L, EXECUTE_L, ALU_WRITEBACK} state;
+alu_control_t alu_control_next;
 
 always_ff @(posedge clk) begin
   if (rst) begin
@@ -84,7 +87,6 @@ always_ff @(posedge clk) begin
     PC_ena = 1'b1;
     reg_write <= 1'b1; // write enable for register file
     PC_next <= 32'b0;
-    mem_src <= MEM_SRC_PC;
     state <= FETCH;
   end
 
@@ -102,6 +104,11 @@ always_ff @(posedge clk) begin
       $display("FETCH: PC=%d", PC);
       PC_next <= PC + 4;
 
+    //   // TODO: question- why can't we combine FETCH and MEM_ADDR? 
+    // TRIED COMBINING. IT WORKS
+    //   // also- why can't we set alu_control or a variable to hold alu_control's 
+    //   // value in FETCH too? all this code is just looking at mem_rd_addr
+
       case(mem_rd_data[6:0]) // mem_rd_data[6:0] is the op code
         OP_RTYPE : begin
           $display("MEM_ADDR OP_RTYPE: rd=%d, rs1=%d, rs2=%d", mem_rd_data[11:7], mem_rd_data[19:15], mem_rd_data[24:20]);
@@ -114,80 +121,62 @@ always_ff @(posedge clk) begin
           rs1 <= mem_rd_data[19:15];
           state <= EXECUTE_I;
         end
-        OP_LTYPE : begin
-          $display("MEM_ADDR OP_LTYPE: rd=%d, rs1=%d, imm=%d", mem_rd_data[11:7], mem_rd_data[19:15], mem_rd_data[31:20]);
-          case(mem_rd_data[14:12]) // case on funct3 code
-            FUNCT3_LOAD_LW : begin
-              src_a = mem_rd_data[19:15];
-              src_b = mem_rd_data[31:20];
-              alu_control = ALU_ADD;
-            end
-          endcase
-          mem_src <= MEM_SRC_RESULT;
-          state <= EXECUTE_L;
-        end
-        // TODO: figure out SW instruction, where is the immediate?
-        // OP_STYPE : begin
-        //   $display("MEM_ADDR OP_STYPE: rs2=%d, rs1=%d, imm=%d", mem_rd_data[11:7], mem_rd_data[19:15], mem_rd_data[31:20]);
-        //   src_a = mem_rd_data[19:15];
-        //   src_b = mem_rd_data[31:20];
-        //   alu_control = ALU_ADD;
-        //   state <= READ_L;
-        // end
         default : begin
           $display("MEM_ADDR optype: default (ERROR)");
         end
       endcase
 
-      if (mem_rd_data[6:0] == OP_RTYPE | mem_rd_data[6:0] == OP_ITYPE)
-      case(mem_rd_data[14:12]) // ir[14:12] is the funct3 code
-        FUNCT3_ADD : begin
-          alu_control <= ALU_ADD; // TODO: fix subtract sub which uses funct7 to determine
-        end
-        FUNCT3_SLL : begin
-          alu_control <= ALU_SLL;
-        end
-        FUNCT3_SLT : begin
-          alu_control <= ALU_SLT;
-        end
-        FUNCT3_SLTU : begin
-          alu_control <= ALU_SLTU;
-        end
-        FUNCT3_XOR : begin
-          alu_control <= ALU_XOR;
-        end
-        FUNCT3_SHIFT_RIGHT : begin // TODO: fix Shift_right which uses funct7 to determine
-          alu_control <= ALU_SRA;
-        end
-        FUNCT3_OR : begin
-          alu_control <= ALU_OR;
-        end
-        FUNCT3_AND : begin
-          alu_control <= ALU_AND;
-        end
-        default : begin
-          alu_control <= ALU_INVALID;
-        end
-      endcase
-      $display("EXECUTE_R: alu_control=%s", alu_control_name(alu_control));
+      // TODO: the R & I case statements are identical. take advantage of this?
+      // move case statement into mem_addr: "if Itype or Rtype, do this to set alu_control"?
+      // TRIED IT, WORKS
+
+      if (mem_rd_data[6:0] == OP_RTYPE | mem_rd_data[6:0] == OP_ITYPE) begin
+        case(mem_rd_data[14:12]) // ir[14:12] is the funct3 code
+          FUNCT3_ADD : begin
+            alu_control_next <= ALU_ADD;
+          end
+          FUNCT3_SLL : begin
+            alu_control_next <= ALU_SLL;
+          end
+          FUNCT3_SLT : begin
+            alu_control_next <= ALU_SLT;
+          end
+          FUNCT3_SLTU : begin
+            alu_control_next <= ALU_SLTU;
+          end
+          FUNCT3_XOR : begin
+            alu_control_next <= ALU_XOR;
+          end
+          FUNCT3_SHIFT_RIGHT : begin // Needs a funct7 bit to determine!
+            alu_control_next <= ALU_SRA; // TODO: should this be SRA? SRL? 
+          end
+          FUNCT3_OR : begin
+            alu_control_next <= ALU_OR;
+          end
+          FUNCT3_AND : begin
+            alu_control_next <= ALU_AND;
+          end
+          default : begin
+            alu_control_next <= ALU_INVALID;
+          end
+        endcase
+        $display("EXECUTE_R: alu_control_next=%s", alu_control_name(alu_control_next));
+      end
+      
     end
     EXECUTE_R : begin
       $display("EXECUTE_R: register rs1 data=%d, rs2 data=%d", reg_data1, reg_data2);
       src_a <= reg_data1;
       src_b <= reg_data2;
+      alu_control <= alu_control_next;
       state <= ALU_WRITEBACK;
     end
     EXECUTE_I : begin
       $display("EXECUTE_I: register rs1 data=%d imm=%d", reg_data1, ir[31:20]);
       src_a <= reg_data1;
       src_b <= ir[31:20]; // the immediate imm 
+      alu_control <= alu_control_next;
       state <= ALU_WRITEBACK;
-    end
-    EXECUTE_L : begin
-      $display("EXECUTE_L: register imm(rs1) data=%d", reg_data1);
-      rd <= ir[11:7]; // TODO: ask about if argument takes 4 times address or not
-      rfile_wr_data <= mem_rd_data;
-      state <= FETCH;
     end
     ALU_WRITEBACK : begin
       $display("ALU_WRITEBACK: alu_result=%d", alu_result);

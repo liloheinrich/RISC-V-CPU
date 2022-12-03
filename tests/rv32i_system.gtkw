@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
-[*] Tue Nov 29 02:58:18 2022
+[*] Sat Dec  3 19:14:23 2022
 [*]
 [dumpfile] "/home/lilo/Documents/RISC-V-CPU/rv32i_system.fst"
-[dumpfile_mtime] "Tue Nov 29 02:56:17 2022"
-[dumpfile_size] 6051
+[dumpfile_mtime] "Sat Dec  3 19:13:32 2022"
+[dumpfile_size] 5532
 [savefile] "/home/lilo/Documents/RISC-V-CPU/tests/rv32i_system.gtkw"
-[timestart] 95500
+[timestart] 0
 [size] 1294 704
 [pos] -1 -1
-*-16.652710 275000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-15.652710 45000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test_rv32i_system.
 [treeopen] test_rv32i_system.UUT.
 [treeopen] test_rv32i_system.UUT.CORE.
@@ -28,13 +28,24 @@ test_rv32i_system.UUT.CORE.state[2:0]
 test_rv32i_system.UUT.CORE.PC[31:0]
 test_rv32i_system.UUT.CORE.mem_rd_data[31:0]
 test_rv32i_system.UUT.CORE.ir[31:0]
+test_rv32i_system.UUT.CORE.src_a[31:0]
+test_rv32i_system.UUT.CORE.src_b[31:0]
+test_rv32i_system.UUT.CORE.alu_control[3:0]
 test_rv32i_system.UUT.CORE.alu_result[31:0]
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x00[31:0]
 @24
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x01[31:0]
-@22
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x02[31:0]
+@25
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x03[31:0]
+@24
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x18[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x19[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x20[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x21[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x22[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x25[31:0]
+@22
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x04[31:0]
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x05[31:0]
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x06[31:0]
@@ -42,7 +53,6 @@ test_rv32i_system.UUT.CORE.REGISTER_FILE.x07[31:0]
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x08[31:0]
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x09[31:0]
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x10[31:0]
-@23
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x11[31:0]
 [pattern_trace] 1
 [pattern_trace] 0

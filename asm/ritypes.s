@@ -4,12 +4,17 @@ addi x1, x0, 7
 addi x1, x0, 6
 addi x1, x0, 5
 addi x1, x0, 4
+addi s3, x0, 1000
+addi s4, x0, 6
 sub s2, s3, s4
+addi s6, x0, 8
+addi s9, x0, 2
 sll s5, s6, s9
 slt x1, x1, x1
 sltu x1, x2, x3
 xor t0, t1, t2
 srl ra, sp, gp
+sra ra, sp, gp
 sra tp, s0, fp
 or s1, a0, a1
 and a2, a3, a4
