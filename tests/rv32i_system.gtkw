@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
-[*] Sat Dec  3 19:14:23 2022
+[*] Sun Dec  4 22:06:03 2022
 [*]
 [dumpfile] "/home/lilo/Documents/RISC-V-CPU/rv32i_system.fst"
-[dumpfile_mtime] "Sat Dec  3 19:13:32 2022"
-[dumpfile_size] 5532
+[dumpfile_mtime] "Sun Dec  4 22:05:40 2022"
+[dumpfile_size] 5266
 [savefile] "/home/lilo/Documents/RISC-V-CPU/tests/rv32i_system.gtkw"
 [timestart] 0
 [size] 1294 704
 [pos] -1 -1
-*-15.652710 45000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-15.652710 115000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test_rv32i_system.
 [treeopen] test_rv32i_system.UUT.
 [treeopen] test_rv32i_system.UUT.CORE.
@@ -23,36 +23,41 @@ test_rv32i_system.UUT.CORE.rst
 test_rv32i_system.UUT.CORE.clk
 test_rv32i_system.UUT.CORE.PC_ena
 @24
-test_rv32i_system.UUT.CORE.state[2:0]
-@22
 test_rv32i_system.UUT.CORE.PC[31:0]
+@22
+test_rv32i_system.UUT.CORE.state[3:0]
 test_rv32i_system.UUT.CORE.mem_rd_data[31:0]
 test_rv32i_system.UUT.CORE.ir[31:0]
+@24
 test_rv32i_system.UUT.CORE.src_a[31:0]
 test_rv32i_system.UUT.CORE.src_b[31:0]
+@22
 test_rv32i_system.UUT.CORE.alu_control[3:0]
+@24
 test_rv32i_system.UUT.CORE.alu_result[31:0]
+@22
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x00[31:0]
-@24
-test_rv32i_system.UUT.CORE.REGISTER_FILE.x01[31:0]
-test_rv32i_system.UUT.CORE.REGISTER_FILE.x02[31:0]
 @25
-test_rv32i_system.UUT.CORE.REGISTER_FILE.x03[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x01[31:0]
 @24
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x02[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x03[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x04[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x05[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.x06[31:0]
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x18[31:0]
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x19[31:0]
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x20[31:0]
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x21[31:0]
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x22[31:0]
 test_rv32i_system.UUT.CORE.REGISTER_FILE.x25[31:0]
-@22
-test_rv32i_system.UUT.CORE.REGISTER_FILE.x04[31:0]
-test_rv32i_system.UUT.CORE.REGISTER_FILE.x05[31:0]
-test_rv32i_system.UUT.CORE.REGISTER_FILE.x06[31:0]
-test_rv32i_system.UUT.CORE.REGISTER_FILE.x07[31:0]
-test_rv32i_system.UUT.CORE.REGISTER_FILE.x08[31:0]
-test_rv32i_system.UUT.CORE.REGISTER_FILE.x09[31:0]
-test_rv32i_system.UUT.CORE.REGISTER_FILE.x10[31:0]
-test_rv32i_system.UUT.CORE.REGISTER_FILE.x11[31:0]
+test_rv32i_system.UUT.MMU.INST_RAM.wr_data[31:0]
+@28
+test_rv32i_system.UUT.MMU.INST_RAM.wr_ena
+@24
+test_rv32i_system.UUT.CORE.REGISTER_FILE.rd_addr0[4:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.rd_addr1[4:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.rd_data0[31:0]
+test_rv32i_system.UUT.CORE.REGISTER_FILE.rd_data1[31:0]
 [pattern_trace] 1
 [pattern_trace] 0
