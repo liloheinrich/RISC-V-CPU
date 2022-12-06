@@ -72,7 +72,7 @@ always_comb begin : memory_read_address_mux
   endcase
 end
 
-enum logic [3:0] {FETCH, MEM_ADDR, EXECUTE_R, EXECUTE_I, EXECUTE_L, EXECUTE_S, TURN_OFF_WRITE_S, EXECUTE_JAL, ALU_WRITEBACK} state;
+enum logic [3:0] {FETCH, MEM_ADDR, EXECUTE_R, EXECUTE_I, EXECUTE_L, EXECUTE_S, TURN_OFF_WRITE_S, EXECUTE_JAL, EXECUTE_JALR, ALU_WRITEBACK} state;
 
 always_ff @(posedge clk) begin
   if (rst) begin
@@ -139,6 +139,15 @@ always_ff @(posedge clk) begin
 
           state <= EXECUTE_JAL;
         end
+        OP_JALR : begin
+          $display("OP_JALR: rd=%d, rs1=%d, imm=%d", mem_rd_data[11:7], mem_rd_data[19:15], mem_rd_data[31:20]);
+          rs1 <= mem_rd_data[19:15];
+
+          rd <= mem_rd_data[11:7];
+          rfile_wr_data <= PC + 4;
+
+          state <= EXECUTE_I;
+        end
         default : begin
           $display("optype: default (ERROR)");
         end
@@ -188,7 +197,11 @@ always_ff @(posedge clk) begin
       $display("EXECUTE_I: register rs1 data=%d imm=%d", reg_data1, ir[31:20]);
       src_a <= reg_data1;
       src_b <= ir[31:20]; // the immediate imm 
-      state <= ALU_WRITEBACK;
+      if (ir[6:0] == OP_JALR) begin
+        state <= EXECUTE_JALR;
+        alu_control <= ALU_ADD;
+      end
+      else state <= ALU_WRITEBACK; // ITYPE
     end
     EXECUTE_L : begin
       $display("EXECUTE_L: imm(rs1) data=%d", mem_rd_data);
@@ -209,6 +222,10 @@ always_ff @(posedge clk) begin
       state <= FETCH;
     end
     EXECUTE_JAL : begin
+      PC_next <= alu_result;
+      state <= FETCH;
+    end
+    EXECUTE_JALR : begin // This is a separate state for clarity, could combine with EXECUTE_JAL
       PC_next <= alu_result;
       state <= FETCH;
     end
