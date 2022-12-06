@@ -129,7 +129,8 @@ always_ff @(posedge clk) begin
           $display("OP_JAL: rd=%d, imm=%d", mem_rd_data[11:7], mem_rd_data[31:12]);
           // calculate address to jump to
           src_a <= PC;
-          src_b <= mem_rd_data[31:12];
+          // src_b <= mem_rd_data[31:12];
+          src_b <= {mem_rd_data[31], mem_rd_data[19:12], mem_rd_data[20], mem_rd_data[30:21]};
           alu_control <= ALU_ADD;
 
           // write address + 4 to return
