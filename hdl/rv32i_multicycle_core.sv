@@ -72,7 +72,8 @@ always_comb begin : memory_read_address_mux
   endcase
 end
 
-enum logic [3:0] {FETCH, MEM_ADDR, EXECUTE_R, EXECUTE_I, EXECUTE_L, EXECUTE_S, TURN_OFF_WRITE_S, EXECUTE_JAL, EXECUTE_JALR, ALU_WRITEBACK} state;
+enum logic [3:0] {FETCH, MEM_ADDR, EXECUTE_R, EXECUTE_I, EXECUTE_L, EXECUTE_S, TURN_OFF_WRITE_S, EXECUTE_JAL, WAIT_JAL, EXECUTE_JALR, ALU_WRITEBACK} state;
+//                  0        1         2          3          4          5             6               7           8          9              10                 
 
 always_ff @(posedge clk) begin
   if (rst) begin
@@ -129,7 +130,6 @@ always_ff @(posedge clk) begin
           $display("OP_JAL: rd=%d, imm=%d", mem_rd_data[11:7], mem_rd_data[31:12]);
           // calculate address to jump to
           src_a <= PC;
-          // src_b <= mem_rd_data[31:12];
           src_b <= {mem_rd_data[31], mem_rd_data[19:12], mem_rd_data[20], mem_rd_data[30:21]};
           alu_control <= ALU_ADD;
 
@@ -223,10 +223,13 @@ always_ff @(posedge clk) begin
     end
     EXECUTE_JAL : begin
       PC_next <= alu_result;
-      state <= FETCH;
+      state <= WAIT_JAL;
     end
     EXECUTE_JALR : begin // This is a separate state for clarity, could combine with EXECUTE_JAL
       PC_next <= alu_result;
+      state <= FETCH;
+    end
+    WAIT_JAL : begin
       state <= FETCH;
     end
     ALU_WRITEBACK : begin
