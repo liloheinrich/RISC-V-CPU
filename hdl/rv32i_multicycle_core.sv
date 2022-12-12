@@ -21,6 +21,7 @@ input   wire [31:0] mem_rd_data;
 output logic mem_wr_ena;
 
 logic [31:0] ir;
+logic [31:0] disp_beq;
 
 // Program Counter
 output wire [31:0] PC;
@@ -72,8 +73,8 @@ always_comb begin : memory_read_address_mux
   endcase
 end
 
-enum logic [3:0] {FETCH, MEM_ADDR, EXECUTE_R, EXECUTE_I, EXECUTE_L, EXECUTE_S, TURN_OFF_WRITE_S, EXECUTE_JAL, WAIT_JAL, EXECUTE_JALR, ALU_WRITEBACK} state;
-//                  0        1         2          3          4          5             6               7           8          9              10                 
+enum logic [3:0] {FETCH, MEM_ADDR, EXECUTE_R, EXECUTE_I, EXECUTE_L, EXECUTE_S, TURN_OFF_WRITE_S, EXECUTE_JAL, WAIT_JAL, EXECUTE_JALR, EXECUTE_B, EXECUTE_B2, ALU_WRITEBACK} state;
+//                  0        1         2          3          4          5             6               7           8          9             10        11           12                
 
 always_ff @(posedge clk) begin
   if (rst) begin
@@ -147,6 +148,12 @@ always_ff @(posedge clk) begin
           rfile_wr_data <= PC + 4;
 
           state <= EXECUTE_I;
+        end
+        OP_BTYPE : begin
+          $display("OP_BTYPE: rs1=%d, rs2=%d, imm=%d", mem_rd_data[19:15], mem_rd_data[24:20]);
+          rs1 <= mem_rd_data[19:15];
+          rs2 <= mem_rd_data[24:20];
+          state <= EXECUTE_B;
         end
         default : begin
           $display("optype: default (ERROR)");
@@ -230,6 +237,29 @@ always_ff @(posedge clk) begin
       state <= FETCH;
     end
     WAIT_JAL : begin
+      state <= FETCH;
+    end
+    EXECUTE_B : begin
+      case(ir[14:12]) // case on funct3 code
+        FUNCT3_BEQ : begin
+        end
+        FUNCT3_BNE : begin
+        end
+        FUNCT3_BLT : begin
+          alu_control <= ALU_SLT;
+        end
+      endcase
+      $display("EXECUTE_B: alu_control=%s", alu_control_name(alu_control));
+      $display("EXECUTE_B: register rs1 data=%d, rs2 data=%d", reg_data1, reg_data2);
+      src_a <= reg_data1;
+      src_b <= reg_data2;
+      state <= EXECUTE_B2;
+    end
+    EXECUTE_B2 : begin
+      if (equal) begin
+        disp_beq <= {ir[31], ir[7], ir[30:25], ir[11:8]};
+        PC_next <= {ir[31], ir[7], ir[30:25], ir[11:8]} + PC;
+      end
       state <= FETCH;
     end
     ALU_WRITEBACK : begin
