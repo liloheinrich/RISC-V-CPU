@@ -3,18 +3,16 @@ add x1, x1, x0
 addi x1, x0, 7
 addi x1, x0, 6
 addi x1, x0, 5
-addi x1, x0, 4
+addi x2, x0, 4
 addi s3, x0, 1000
 addi s4, x0, 6
-sub s2, s3, s4
-addi s6, x0, 8
-addi s9, x0, 2
-sll s5, s6, s9
+# sub s2, s3, s4
+sll s5, s3, s4
 slt x1, x1, x1
-sltu x1, x2, x3
-xor t0, t1, t2
-srl ra, sp, gp
-sra ra, sp, gp
-sra tp, s0, fp
-or s1, a0, a1
-and a2, a3, a4
+sltu x3, x1, x2
+xor x4, x2, x1
+srl s6, s5, s4
+# sra ra, sp, gp
+# sra tp, s0, fp
+or x2, x20, x1
+and x2, x20, x1

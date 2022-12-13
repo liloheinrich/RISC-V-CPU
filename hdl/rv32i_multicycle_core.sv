@@ -73,8 +73,8 @@ always_comb begin : memory_read_address_mux
   endcase
 end
 
-enum logic [3:0] {FETCH, MEM_ADDR, EXECUTE_R, EXECUTE_I, EXECUTE_L, EXECUTE_S, TURN_OFF_WRITE_S, EXECUTE_JAL, WAIT_JAL, EXECUTE_JALR, EXECUTE_B, EXECUTE_B2, ALU_WRITEBACK} state;
-//                  0        1         2          3          4          5             6               7           8          9             10        11           12                
+enum logic [3:0] {FETCH, MEM_ADDR, EXECUTE_R, EXECUTE_I, EXECUTE_L, EXECUTE_S, TURN_OFF_WRITE_S, EXECUTE_JAL, WAIT, EXECUTE_JALR, EXECUTE_B, EXECUTE_B2, ALU_WRITEBACK} state;
+//                  0        1         2          3          4          5             6               7         8          9           10        11           12                
 
 always_ff @(posedge clk) begin
   if (rst) begin
@@ -230,13 +230,13 @@ always_ff @(posedge clk) begin
     end
     EXECUTE_JAL : begin
       PC_next <= alu_result;
-      state <= WAIT_JAL;
+      state <= WAIT;
     end
     EXECUTE_JALR : begin // This is a separate state for clarity, could combine with EXECUTE_JAL
       PC_next <= alu_result;
       state <= FETCH;
     end
-    WAIT_JAL : begin
+    WAIT : begin
       state <= FETCH;
     end
     EXECUTE_B : begin
@@ -257,10 +257,11 @@ always_ff @(posedge clk) begin
     end
     EXECUTE_B2 : begin
       if (equal) begin
-        disp_beq <= {ir[31], ir[7], ir[30:25], ir[11:8]};
-        PC_next <= {ir[31], ir[7], ir[30:25], ir[11:8]} + PC;
+        disp_beq <= {{20{ir[31]}}, ir[7], ir[30:25], ir[11:8], 1'b0};
+        PC_next <= {{20{ir[31]}}, ir[7], ir[30:25], ir[11:8], 1'b0} + PC;
+        // {{20{IR[31]}}, IR[7],IR[30:25], IR[11:8], 1'b0};
       end
-      state <= FETCH;
+      state <= WAIT;
     end
     ALU_WRITEBACK : begin
       $display("ALU_WRITEBACK: alu_result=%d", alu_result);

@@ -31,8 +31,8 @@ test_rv32i_ri_types: tests/test_rv32i_system.sv asm/ritypes.memh ${RV32I_SRCS}
 test_rv32i_ls_types: tests/test_rv32i_system.sv asm/lstypes.memh ${RV32I_SRCS}
 	${IVERILOG} -DINITIAL_INST_MEM=\"asm/lstypes.memh\" tests/test_rv32i_system.sv ${RV32I_SRCS} -s test_rv32i_system -o test_rv32i_system.bin && ${VVP} test_rv32i_system.bin ${VVP_POST}
 
-test_rv32i_all_types: tests/test_rv32i_system.sv asm/all_instructions.memh ${RV32I_SRCS}
-	${IVERILOG} -DINITIAL_INST_MEM=\"asm/all_instructions.memh\" tests/test_rv32i_system.sv ${RV32I_SRCS} -s test_rv32i_system -o test_rv32i_system.bin && ${VVP} test_rv32i_system.bin ${VVP_POST}
+test_rv32i_jb_types: tests/test_rv32i_system.sv asm/jb_types.memh ${RV32I_SRCS}
+	${IVERILOG} -DINITIAL_INST_MEM=\"asm/jb_types.memh\" tests/test_rv32i_system.sv ${RV32I_SRCS} -s test_rv32i_system -o test_rv32i_system.bin && ${VVP} test_rv32i_system.bin ${VVP_POST}
 
 test_rv32i_peripherals: tests/test_rv32i_system.sv asm/peripherals.memh ${RV32I_SRCS}
 	${IVERILOG} -DINITIAL_INST_MEM=\"asm/peripherals.memh\" tests/test_rv32i_system.sv ${RV32I_SRCS} -s test_rv32i_system -o test_rv32i_system.bin && ${VVP} test_rv32i_system.bin ${VVP_POST}
