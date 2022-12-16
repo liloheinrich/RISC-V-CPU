@@ -1,0 +1,36 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Wed Dec 14 10:06:41 2022
+# Process ID: 3777
+# Current directory: /home/emma/RISC-V-CPU
+# Command line: vivado -mode batch -source build.tcl
+# Log file: /home/emma/RISC-V-CPU/vivado.log
+# Journal file: /home/emma/RISC-V-CPU/vivado.jou
+# Running On: emma-Latitude-5491, OS: Linux, CPU Frequency: 2600.000 MHz, CPU Physical cores: 6, Host memory: 16582 MB
+#-----------------------------------------------------------
+source build.tcl
+# read_verilog [ glob hdl/*.sv ]
+# read_xdc ./rv32i_system.xdc
+# synth_design -top rv32i_system -part xc7a15tcpg236-1
+Command: synth_design -top rv32i_system -part xc7a15tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a15t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a15t'
+INFO: [Device 21-403] Loading part xc7a15tcpg236-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 3784
+WARNING: [Synth 8-9736] missing or empty argument against format specification for 'display' [/home/emma/RISC-V-CPU/hdl/rv32i_multicycle_core.sv:153]
+ERROR: [Synth 8-36] 'N' is not declared [/home/emma/RISC-V-CPU/hdl/sign_extend.sv:6]
+ERROR: [Synth 8-9960] range must be bounded by constant expressions [/home/emma/RISC-V-CPU/hdl/sign_extend.sv:6]
+ERROR: [Synth 8-36] 'N' is not declared [/home/emma/RISC-V-CPU/hdl/sign_extend.sv:7]
+ERROR: [Synth 8-9960] range must be bounded by constant expressions [/home/emma/RISC-V-CPU/hdl/sign_extend.sv:7]
+INFO: [Synth 8-8750] module 'sign_extend' ignored due to previous errors [/home/emma/RISC-V-CPU/hdl/sign_extend.sv:13]
+Failed to read verilog '/home/emma/RISC-V-CPU/hdl/sign_extend.sv'
+INFO: [Common 17-83] Releasing license: Synthesis
+7 Infos, 1 Warnings, 0 Critical Warnings and 5 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
+INFO: [Common 17-206] Exiting Vivado at Wed Dec 14 10:06:56 2022...

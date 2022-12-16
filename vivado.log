@@ -1,0 +1,567 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Wed Dec 14 10:46:16 2022
+# Process ID: 7560
+# Current directory: /home/emma/RISC-V-CPU
+# Command line: vivado -mode batch -source analysis.tcl
+# Log file: /home/emma/RISC-V-CPU/vivado.log
+# Journal file: /home/emma/RISC-V-CPU/vivado.jou
+# Running On: emma-Latitude-5491, OS: Linux, CPU Frequency: 2600.000 MHz, CPU Physical cores: 6, Host memory: 16582 MB
+#-----------------------------------------------------------
+source analysis.tcl
+# read_verilog [ glob hdl/*.sv ]
+# read_xdc ./rv32i_system.xdc
+# synth_design -top rv32i_system -part xc7a15tcpg236-1 
+Command: synth_design -top rv32i_system -part xc7a15tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a15t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a15t'
+INFO: [Device 21-403] Loading part xc7a15tcpg236-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 7570
+WARNING: [Synth 8-9736] missing or empty argument against format specification for 'display' [/home/emma/RISC-V-CPU/hdl/rv32i_multicycle_core.sv:153]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2617.816 ; gain = 0.000 ; free physical = 6220 ; free virtual = 12545
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'rv32i_system' [/home/emma/RISC-V-CPU/hdl/rv32i_system.sv:7]
+INFO: [Synth 8-251] Initial instruction memory not defined, not running simulation. [/home/emma/RISC-V-CPU/hdl/rv32i_system.sv:67]
+INFO: [Synth 8-6157] synthesizing module 'MMCME2_BASE' [/Programs/Vivado/2022.1/scripts/rt/data/unisim_comp.v:63629]
+	Parameter BANDWIDTH bound to: OPTIMIZED - type: string 
+	Parameter CLKFBOUT_MULT_F bound to: 64.000000 - type: double 
+	Parameter CLKIN1_PERIOD bound to: 83.333333 - type: double 
+	Parameter CLKOUT0_DIVIDE_F bound to: 12.500000 - type: double 
+	Parameter CLKOUT0_DUTY_CYCLE bound to: 0.500000 - type: double 
+	Parameter CLKOUT0_PHASE bound to: 0.000000 - type: double 
+	Parameter DIVCLK_DIVIDE bound to: 1 - type: integer 
+	Parameter STARTUP_WAIT bound to: FALSE - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'MMCME2_BASE' (0#1) [/Programs/Vivado/2022.1/scripts/rt/data/unisim_comp.v:63629]
+WARNING: [Synth 8-7071] port 'CLKFBOUTB' of module 'MMCME2_BASE' is unconnected for instance 'MMCME2_BASE_inst' [/home/emma/RISC-V-CPU/hdl/rv32i_system.sv:42]
+WARNING: [Synth 8-7071] port 'CLKOUT0B' of module 'MMCME2_BASE' is unconnected for instance 'MMCME2_BASE_inst' [/home/emma/RISC-V-CPU/hdl/rv32i_system.sv:42]
+WARNING: [Synth 8-7071] port 'CLKOUT1' of module 'MMCME2_BASE' is unconnected for instance 'MMCME2_BASE_inst' [/home/emma/RISC-V-CPU/hdl/rv32i_system.sv:42]
+WARNING: [Synth 8-7071] port 'CLKOUT1B' of module 'MMCME2_BASE' is unconnected for instance 'MMCME2_BASE_inst' [/home/emma/RISC-V-CPU/hdl/rv32i_system.sv:42]
+WARNING: [Synth 8-7071] port 'CLKOUT2' of module 'MMCME2_BASE' is unconnected for instance 'MMCME2_BASE_inst' [/home/emma/RISC-V-CPU/hdl/rv32i_system.sv:42]
+WARNING: [Synth 8-7071] port 'CLKOUT2B' of module 'MMCME2_BASE' is unconnected for instance 'MMCME2_BASE_inst' [/home/emma/RISC-V-CPU/hdl/rv32i_system.sv:42]
+WARNING: [Synth 8-7071] port 'CLKOUT3' of module 'MMCME2_BASE' is unconnected for instance 'MMCME2_BASE_inst' [/home/emma/RISC-V-CPU/hdl/rv32i_system.sv:42]
+WARNING: [Synth 8-7071] port 'CLKOUT3B' of module 'MMCME2_BASE' is unconnected for instance 'MMCME2_BASE_inst' [/home/emma/RISC-V-CPU/hdl/rv32i_system.sv:42]
+WARNING: [Synth 8-7071] port 'CLKOUT4' of module 'MMCME2_BASE' is unconnected for instance 'MMCME2_BASE_inst' [/home/emma/RISC-V-CPU/hdl/rv32i_system.sv:42]
+WARNING: [Synth 8-7071] port 'CLKOUT5' of module 'MMCME2_BASE' is unconnected for instance 'MMCME2_BASE_inst' [/home/emma/RISC-V-CPU/hdl/rv32i_system.sv:42]
+WARNING: [Synth 8-7071] port 'CLKOUT6' of module 'MMCME2_BASE' is unconnected for instance 'MMCME2_BASE_inst' [/home/emma/RISC-V-CPU/hdl/rv32i_system.sv:42]
+WARNING: [Synth 8-7071] port 'LOCKED' of module 'MMCME2_BASE' is unconnected for instance 'MMCME2_BASE_inst' [/home/emma/RISC-V-CPU/hdl/rv32i_system.sv:42]
+WARNING: [Synth 8-7023] instance 'MMCME2_BASE_inst' of module 'MMCME2_BASE' has 18 connections declared, but only 6 given [/home/emma/RISC-V-CPU/hdl/rv32i_system.sv:42]
+INFO: [Synth 8-6157] synthesizing module 'rv32i_multicycle_core' [/home/emma/RISC-V-CPU/hdl/rv32i_multicycle_core.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'register' [/home/emma/RISC-V-CPU/hdl/register.sv:8]
+	Parameter N bound to: 32 - type: integer 
+	Parameter RESET bound to: 0 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'register' (0#1) [/home/emma/RISC-V-CPU/hdl/register.sv:8]
+INFO: [Synth 8-6157] synthesizing module 'register_file' [/home/emma/RISC-V-CPU/hdl/register_file.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'decoder_5_to_32' [/home/emma/RISC-V-CPU/hdl/decoder_5_to_32.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'decoder_1_to_2' [/home/emma/RISC-V-CPU/hdl/decoder_1_to_2.sv:4]
+INFO: [Synth 8-6155] done synthesizing module 'decoder_1_to_2' (0#1) [/home/emma/RISC-V-CPU/hdl/decoder_1_to_2.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'decoder_4_to_16' [/home/emma/RISC-V-CPU/hdl/decoder_4_to_16.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'decoder_3_to_8' [/home/emma/RISC-V-CPU/hdl/decoder_3_to_8.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'decoder_2_to_4' [/home/emma/RISC-V-CPU/hdl/decoder_2_to_4.sv:4]
+INFO: [Synth 8-6155] done synthesizing module 'decoder_2_to_4' (0#1) [/home/emma/RISC-V-CPU/hdl/decoder_2_to_4.sv:4]
+INFO: [Synth 8-6155] done synthesizing module 'decoder_3_to_8' (0#1) [/home/emma/RISC-V-CPU/hdl/decoder_3_to_8.sv:4]
+INFO: [Synth 8-6155] done synthesizing module 'decoder_4_to_16' (0#1) [/home/emma/RISC-V-CPU/hdl/decoder_4_to_16.sv:4]
+INFO: [Synth 8-6155] done synthesizing module 'decoder_5_to_32' (0#1) [/home/emma/RISC-V-CPU/hdl/decoder_5_to_32.sv:4]
+INFO: [Synth 8-6155] done synthesizing module 'register_file' (0#1) [/home/emma/RISC-V-CPU/hdl/register_file.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'alu_behavioural' [/home/emma/RISC-V-CPU/hdl/alu_behavioural.sv:6]
+INFO: [Synth 8-6155] done synthesizing module 'alu_behavioural' (0#1) [/home/emma/RISC-V-CPU/hdl/alu_behavioural.sv:6]
+INFO: [Synth 8-226] default block is never used [/home/emma/RISC-V-CPU/hdl/rv32i_multicycle_core.sv:69]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/emma/RISC-V-CPU/hdl/rv32i_multicycle_core.sv:112]
+INFO: [Synth 8-226] default block is never used [/home/emma/RISC-V-CPU/hdl/rv32i_multicycle_core.sv:164]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/emma/RISC-V-CPU/hdl/rv32i_multicycle_core.sv:243]
+INFO: [Synth 8-6155] done synthesizing module 'rv32i_multicycle_core' (0#1) [/home/emma/RISC-V-CPU/hdl/rv32i_multicycle_core.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'mmu' [/home/emma/RISC-V-CPU/hdl/mmu.sv:6]
+	Parameter INIT_INST bound to: mem/zeros.memh - type: string 
+INFO: [Synth 8-6157] synthesizing module 'distributed_ram' [/home/emma/RISC-V-CPU/hdl/distributed_ram.sv:15]
+	Parameter W bound to: 32 - type: integer 
+	Parameter L bound to: 256 - type: integer 
+	Parameter INIT bound to: 112'b0110110101100101011011010010111101111010011001010111001001101111011100110010111001101101011001010110110101101000 
+INFO: [Synth 8-251] ########################################### [/home/emma/RISC-V-CPU/hdl/distributed_ram.sv:29]
+INFO: [Synth 8-251] Initializing distributed ram from file mem/zeros.memh. [/home/emma/RISC-V-CPU/hdl/distributed_ram.sv:30]
+INFO: [Synth 8-251] ########################################### [/home/emma/RISC-V-CPU/hdl/distributed_ram.sv:31]
+INFO: [Synth 8-3876] $readmem data file 'mem/zeros.memh' is read successfully [/home/emma/RISC-V-CPU/hdl/distributed_ram.sv:32]
+INFO: [Synth 8-6155] done synthesizing module 'distributed_ram' (0#1) [/home/emma/RISC-V-CPU/hdl/distributed_ram.sv:15]
+INFO: [Synth 8-6157] synthesizing module 'dual_port_ram' [/home/emma/RISC-V-CPU/hdl/dual_port_ram.sv:8]
+	Parameter W bound to: 8 - type: integer 
+	Parameter L bound to: 76800 - type: integer 
+	Parameter INIT bound to: 112'b0110110101100101011011010010111101111010011001010111001001101111011100110010111001101101011001010110110101101000 
+INFO: [Synth 8-251] Initializing distributed ram from file mem/zeros.memh. [/home/emma/RISC-V-CPU/hdl/dual_port_ram.sv:25]
+INFO: [Synth 8-3876] $readmem data file 'mem/zeros.memh' is read successfully [/home/emma/RISC-V-CPU/hdl/dual_port_ram.sv:26]
+INFO: [Synth 8-6155] done synthesizing module 'dual_port_ram' (0#1) [/home/emma/RISC-V-CPU/hdl/dual_port_ram.sv:8]
+WARNING: [Synth 8-689] width (16) of port connection 'wr_data0' does not match port width (8) of module 'dual_port_ram' [/home/emma/RISC-V-CPU/hdl/mmu.sv:58]
+WARNING: [Synth 8-689] width (16) of port connection 'rd_data0' does not match port width (8) of module 'dual_port_ram' [/home/emma/RISC-V-CPU/hdl/mmu.sv:58]
+WARNING: [Synth 8-689] width (16) of port connection 'rd_data1' does not match port width (8) of module 'dual_port_ram' [/home/emma/RISC-V-CPU/hdl/mmu.sv:59]
+INFO: [Synth 8-6157] synthesizing module 'ili9341_display_controller' [/home/emma/RISC-V-CPU/hdl/ili9341_display_controller.sv:11]
+	Parameter VRAM_START_ADDRESS bound to: 4096 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'spi_controller' [/home/emma/RISC-V-CPU/hdl/spi_controller.sv:6]
+INFO: [Synth 8-6155] done synthesizing module 'spi_controller' (0#1) [/home/emma/RISC-V-CPU/hdl/spi_controller.sv:6]
+INFO: [Synth 8-6157] synthesizing module 'block_rom' [/home/emma/RISC-V-CPU/hdl/block_rom.sv:6]
+	Parameter W bound to: 8 - type: integer 
+	Parameter L bound to: 125 - type: integer 
+	Parameter INIT bound to: 168'b011011010110010101101101001011110110100101101100011010010011100100110011001101000011000101011111011010010110111001101001011101000010111001101101011001010110110101101000 
+INFO: [Synth 8-251] Initializing block rom from file mem/ili9341_init.memh. [/home/emma/RISC-V-CPU/hdl/block_rom.sv:18]
+INFO: [Synth 8-3876] $readmem data file 'mem/ili9341_init.memh' is read successfully [/home/emma/RISC-V-CPU/hdl/block_rom.sv:19]
+INFO: [Synth 8-6155] done synthesizing module 'block_rom' (0#1) [/home/emma/RISC-V-CPU/hdl/block_rom.sv:6]
+INFO: [Synth 8-226] default block is never used [/home/emma/RISC-V-CPU/hdl/ili9341_display_controller.sv:162]
+INFO: [Synth 8-6155] done synthesizing module 'ili9341_display_controller' (0#1) [/home/emma/RISC-V-CPU/hdl/ili9341_display_controller.sv:11]
+WARNING: [Synth 8-7071] port 'vsync' of module 'ili9341_display_controller' is unconnected for instance 'ILI9341' [/home/emma/RISC-V-CPU/hdl/mmu.sv:64]
+WARNING: [Synth 8-7071] port 'hsync' of module 'ili9341_display_controller' is unconnected for instance 'ILI9341' [/home/emma/RISC-V-CPU/hdl/mmu.sv:64]
+WARNING: [Synth 8-7023] instance 'ILI9341' of module 'ili9341_display_controller' has 14 connections declared, but only 12 given [/home/emma/RISC-V-CPU/hdl/mmu.sv:64]
+INFO: [Synth 8-6157] synthesizing module 'pulse_generator' [/home/emma/RISC-V-CPU/hdl/pulse_generator.sv:4]
+	Parameter N bound to: 13 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'pulse_generator' (0#1) [/home/emma/RISC-V-CPU/hdl/pulse_generator.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'pwm' [/home/emma/RISC-V-CPU/hdl/pwm.sv:4]
+	Parameter N bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'pwm' (0#1) [/home/emma/RISC-V-CPU/hdl/pwm.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'pwm__parameterized0' [/home/emma/RISC-V-CPU/hdl/pwm.sv:4]
+	Parameter N bound to: 8 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'pwm__parameterized0' (0#1) [/home/emma/RISC-V-CPU/hdl/pwm.sv:4]
+INFO: [Synth 8-6155] done synthesizing module 'mmu' (0#1) [/home/emma/RISC-V-CPU/hdl/mmu.sv:6]
+INFO: [Synth 8-6155] done synthesizing module 'rv32i_system' (0#1) [/home/emma/RISC-V-CPU/hdl/rv32i_system.sv:7]
+WARNING: [Synth 8-6014] Unused sequential element disp_beq_reg was removed.  [/home/emma/RISC-V-CPU/hdl/rv32i_multicycle_core.sv:260]
+WARNING: [Synth 8-3848] Net o_ready in module/entity ili9341_display_controller does not have driver. [/home/emma/RISC-V-CPU/hdl/ili9341_display_controller.sv:52]
+WARNING: [Synth 8-3848] Net gpio_mode in module/entity mmu does not have driver. [/home/emma/RISC-V-CPU/hdl/mmu.sv:40]
+WARNING: [Synth 8-3848] Net gpio_state_i in module/entity mmu does not have driver. [/home/emma/RISC-V-CPU/hdl/mmu.sv:40]
+WARNING: [Synth 8-7129] Port o_ready in module spi_controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ena in module rv32i_multicycle_core is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2617.816 ; gain = 0.000 ; free physical = 7306 ; free virtual = 13641
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2617.816 ; gain = 0.000 ; free physical = 7306 ; free virtual = 13641
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2617.816 ; gain = 0.000 ; free physical = 7306 ; free virtual = 13641
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2617.816 ; gain = 0.000 ; free physical = 7296 ; free virtual = 13631
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/emma/RISC-V-CPU/rv32i_system.xdc]
+Finished Parsing XDC File [/home/emma/RISC-V-CPU/rv32i_system.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/emma/RISC-V-CPU/rv32i_system.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/rv32i_system_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/rv32i_system_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Timing 38-2] Deriving generated clocks
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2681.832 ; gain = 0.000 ; free physical = 7200 ; free virtual = 13551
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  MMCME2_BASE => MMCME2_ADV: 1 instance 
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2681.832 ; gain = 0.000 ; free physical = 7200 ; free virtual = 13551
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2681.832 ; gain = 64.016 ; free physical = 7275 ; free virtual = 13627
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a15tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2681.832 ; gain = 64.016 ; free physical = 7275 ; free virtual = 13627
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2681.832 ; gain = 64.016 ; free physical = 7275 ; free virtual = 13627
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'rv32i_multicycle_core'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'spi_controller'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                   FETCH |                     000000000001 |                             0000
+               EXECUTE_R |                     000000000010 |                             0010
+               EXECUTE_I |                     000000000100 |                             0011
+            EXECUTE_JALR |                     000000001000 |                             1001
+           ALU_WRITEBACK |                     000000010000 |                             1100
+               EXECUTE_L |                     000000100000 |                             0100
+               EXECUTE_S |                     000001000000 |                             0101
+        TURN_OFF_WRITE_S |                     000010000000 |                             0110
+             EXECUTE_JAL |                     000100000000 |                             0111
+               EXECUTE_B |                     001000000000 |                             1010
+              EXECUTE_B2 |                     010000000000 |                             1011
+                    WAIT |                     100000000000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'rv32i_multicycle_core'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  S_IDLE |                              000 |                              000
+                 S_TXING |                              001 |                              001
+               S_TX_DONE |                              010 |                              010
+                 S_RXING |                              011 |                              011
+                 iSTATE0 |                              100 |                              111
+*
+                  iSTATE |                              101 |                              101
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'spi_controller'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2681.832 ; gain = 64.016 ; free physical = 7269 ; free virtual = 13626
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 3     
+	   3 Input   32 Bit       Adders := 1     
+	   2 Input   22 Bit       Adders := 1     
+	   2 Input    9 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 5     
+	   2 Input    7 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 2     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
++---Registers : 
+	               32 Bit    Registers := 40    
+	               24 Bit    Registers := 2     
+	               22 Bit    Registers := 1     
+	               16 Bit    Registers := 1     
+	               10 Bit    Registers := 2     
+	                9 Bit    Registers := 2     
+	                8 Bit    Registers := 7     
+	                7 Bit    Registers := 1     
+	                5 Bit    Registers := 4     
+	                4 Bit    Registers := 3     
+	                3 Bit    Registers := 4     
+	                1 Bit    Registers := 7     
++---RAMs : 
+	             600K Bit	(76800 X 8 bit)          RAMs := 1     
++---ROMs : 
+	                    ROMs := 1     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 7     
+	   8 Input   32 Bit        Muxes := 1     
+	  12 Input   32 Bit        Muxes := 4     
+	   3 Input   32 Bit        Muxes := 1     
+	   2 Input   24 Bit        Muxes := 1     
+	   5 Input   24 Bit        Muxes := 2     
+	   4 Input   24 Bit        Muxes := 1     
+	   8 Input   22 Bit        Muxes := 1     
+	   2 Input   22 Bit        Muxes := 1     
+	   3 Input   21 Bit        Muxes := 1     
+	  12 Input   12 Bit        Muxes := 1     
+	   8 Input   12 Bit        Muxes := 1     
+	   2 Input   12 Bit        Muxes := 1     
+	   7 Input   10 Bit        Muxes := 1     
+	   7 Input    9 Bit        Muxes := 1     
+	   2 Input    9 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 3     
+	   3 Input    8 Bit        Muxes := 2     
+	   8 Input    8 Bit        Muxes := 1     
+	  12 Input    5 Bit        Muxes := 1     
+	   4 Input    5 Bit        Muxes := 1     
+	   5 Input    5 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 3     
+	   8 Input    4 Bit        Muxes := 1     
+	  12 Input    4 Bit        Muxes := 1     
+	   6 Input    3 Bit        Muxes := 1     
+	   5 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 4     
+	   7 Input    3 Bit        Muxes := 2     
+	   8 Input    3 Bit        Muxes := 2     
+	   3 Input    3 Bit        Muxes := 1     
+	   3 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 17    
+	   3 Input    1 Bit        Muxes := 3     
+	   8 Input    1 Bit        Muxes := 15    
+	   4 Input    1 Bit        Muxes := 1     
+	  12 Input    1 Bit        Muxes := 10    
+	   5 Input    1 Bit        Muxes := 9     
+	   7 Input    1 Bit        Muxes := 11    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 45 (col length:60)
+BRAMs: 50 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+DSP Report: Generating DSP MMU/ILI9341/vram_rd_addr2, operation Mode is: A2*(B:0xf0).
+DSP Report: register MMU/ILI9341/pixel_y_reg is absorbed into DSP MMU/ILI9341/vram_rd_addr2.
+DSP Report: operator MMU/ILI9341/vram_rd_addr2 is absorbed into DSP MMU/ILI9341/vram_rd_addr2.
+DSP Report: Generating DSP MMU/ILI9341/vram_rd_addr0, operation Mode is: PCIN+(A:0x0):B2+(C:0x1000).
+DSP Report: register MMU/ILI9341/pixel_x_reg is absorbed into DSP MMU/ILI9341/vram_rd_addr0.
+DSP Report: operator MMU/ILI9341/vram_rd_addr0 is absorbed into DSP MMU/ILI9341/vram_rd_addr0.
+WARNING: [Synth 8-3917] design rv32i_system has port interface_mode[3] driven by constant 1
+WARNING: [Synth 8-3917] design rv32i_system has port interface_mode[2] driven by constant 1
+WARNING: [Synth 8-3917] design rv32i_system has port interface_mode[1] driven by constant 1
+WARNING: [Synth 8-3917] design rv32i_system has port interface_mode[0] driven by constant 0
+WARNING: [Synth 8-3917] design rv32i_system has port backlight driven by constant 1
+WARNING: [Synth 8-7129] Port ena in module rv32i_multicycle_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spi_miso in module rv32i_system is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 2681.832 ; gain = 64.016 ; free physical = 7172 ; free virtual = 13587
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++-------------+------------------------------+---------------+----------------+
+|Module Name  | RTL Object                   | Depth x Width | Implemented As | 
++-------------+------------------------------+---------------+----------------+
+|rv32i_system | MMU/ILI9341/rom_addr_reg_rep | 128x8         | Block RAM      | 
++-------------+------------------------------+---------------+----------------+
+
+
+Block RAM: Preliminary Mapping Report (see note below)
++-------------+------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name  | RTL Object       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++-------------+------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|rv32i_system | MMU/VRAM/ram_reg | 75 K x 8(READ_FIRST)   | W | R | 75 K x 8(WRITE_FIRST)  |   | R | Port A and B     | 0      | 24     | 
++-------------+------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++-------------+----------------------+-----------+----------------------+-----------------+
+|Module Name  | RTL Object           | Inference | Size (Depth x Width) | Primitives      | 
++-------------+----------------------+-----------+----------------------+-----------------+
+|rv32i_system | MMU/DATA_RAM/ram_reg | Implied   | 256 x 32             | RAM256X1S x 32  | 
+|rv32i_system | MMU/INST_RAM/ram_reg | Implied   | 256 x 32             | RAM256X1S x 32  | 
++-------------+----------------------+-----------+----------------------+-----------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++-------------+----------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name  | DSP Mapping                | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++-------------+----------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|rv32i_system | A2*(B:0xf0)                | 10     | 8      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|rv32i_system | PCIN+(A:0x0):B2+(C:0x1000) | 30     | 9      | 13     | -      | -1     | 0    | 1    | 0    | -    | -     | 0    | 0    | 
++-------------+----------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 2681.832 ; gain = 64.016 ; free physical = 7054 ; free virtual = 13448
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 2681.832 ; gain = 64.016 ; free physical = 7047 ; free virtual = 13438
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++-------------+------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name  | RTL Object       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++-------------+------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|rv32i_system | MMU/VRAM/ram_reg | 75 K x 8(READ_FIRST)   | W | R | 75 K x 8(WRITE_FIRST)  |   | R | Port A and B     | 0      | 24     | 
++-------------+------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+
+Distributed RAM: Final Mapping Report
++-------------+----------------------+-----------+----------------------+-----------------+
+|Module Name  | RTL Object           | Inference | Size (Depth x Width) | Primitives      | 
++-------------+----------------------+-----------+----------------------+-----------------+
+|rv32i_system | MMU/DATA_RAM/ram_reg | Implied   | 256 x 32             | RAM256X1S x 32  | 
+|rv32i_system | MMU/INST_RAM/ram_reg | Implied   | 256 x 32             | RAM256X1S x 32  | 
++-------------+----------------------+-----------+----------------------+-----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_0__0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_0__0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_1__0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_1__0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_2__0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_2__0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_3__0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_3__0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_4__0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_4__0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_5__0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_5__0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_6__0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_6__0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_7__0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance MMU/VRAM/ram_reg_1_7__0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 2681.832 ; gain = 64.016 ; free physical = 7039 ; free virtual = 13429
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 2681.832 ; gain = 64.016 ; free physical = 7048 ; free virtual = 13426
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 2681.832 ; gain = 64.016 ; free physical = 7048 ; free virtual = 13426
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 2681.832 ; gain = 64.016 ; free physical = 7041 ; free virtual = 13426
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 2681.832 ; gain = 64.016 ; free physical = 7041 ; free virtual = 13426
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 2681.832 ; gain = 64.016 ; free physical = 7044 ; free virtual = 13429
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 2681.832 ; gain = 64.016 ; free physical = 7044 ; free virtual = 13429
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++-------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name  | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++-------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|rv32i_system | A'*B        | 10     | 8      | -      | -      | 0      | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|rv32i_system | PCIN+A:B'+C | 0      | 9      | -      | -      | 17     | 0    | 1    | -    | -    | -     | 0    | 0    | 
++-------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+------------+------+
+|      |Cell        |Count |
++------+------------+------+
+|1     |BUFG        |     1|
+|2     |CARRY4      |    56|
+|3     |DSP48E1     |     2|
+|5     |LUT1        |    43|
+|6     |LUT2        |   184|
+|7     |LUT3        |    86|
+|8     |LUT4        |   243|
+|9     |LUT5        |   229|
+|10    |LUT6        |  1196|
+|11    |MMCME2_BASE |     1|
+|12    |MUXF7       |   135|
+|13    |RAM256X1S   |    64|
+|14    |RAMB18E1    |     1|
+|15    |RAMB36E1    |    24|
+|18    |FDRE        |  1393|
+|19    |FDSE        |     2|
+|20    |IBUF        |     3|
+|21    |OBUF        |    15|
++------+------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 2681.832 ; gain = 64.016 ; free physical = 7044 ; free virtual = 13429
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 8 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 2681.832 ; gain = 0.000 ; free physical = 7108 ; free virtual = 13494
+Synthesis Optimization Complete : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 2681.832 ; gain = 64.016 ; free physical = 7108 ; free virtual = 13494
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2681.832 ; gain = 0.000 ; free physical = 7202 ; free virtual = 13588
+INFO: [Netlist 29-17] Analyzing 283 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [/home/emma/RISC-V-CPU/rv32i_system.xdc]
+Finished Parsing XDC File [/home/emma/RISC-V-CPU/rv32i_system.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2681.832 ; gain = 0.000 ; free physical = 7123 ; free virtual = 13515
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 65 instances were transformed.
+  MMCME2_BASE => MMCME2_ADV: 1 instance 
+  RAM256X1S => RAM256X1S (MUXF7(x2), MUXF8, RAMS64E(x4)): 64 instances
+
+Synth Design complete, checksum: bdb09168
+INFO: [Common 17-83] Releasing license: Synthesis
+108 Infos, 34 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:48 ; elapsed = 00:00:45 . Memory (MB): peak = 2681.832 ; gain = 64.031 ; free physical = 7347 ; free virtual = 13744
+# write_checkpoint -force synthesis.checkpoint
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00.1 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2721.852 ; gain = 0.000 ; free physical = 7349 ; free virtual = 13743
+INFO: [Common 17-1381] The checkpoint '/home/emma/RISC-V-CPU/synthesis.checkpoint' has been generated.
+# report_timing_summary -file timing_summary.log
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-2] Deriving generated clocks
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+# report_timing -sort_by group -max_paths 100 -path_type summary -file timing.log -verbose
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+INFO: [Timing 38-78] ReportTimingParams: -max_paths 100 -nworst 1 -delay_type max -sort_by group.
+# report_utilization -file usage.log -verbose
+# report_design_analysis -file design_analysis.log -verbose -show_all
+INFO: [Common 17-206] Exiting Vivado at Wed Dec 14 10:47:11 2022...

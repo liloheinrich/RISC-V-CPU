@@ -1,0 +1,130 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (lin64) Build 3526262 Mon Apr 18 15:47:01 MDT 2022
+| Date         : Wed Dec 14 10:47:11 2022
+| Host         : emma-Latitude-5491 running 64-bit Ubuntu 22.04.1 LTS
+| Command      : report_timing -sort_by group -max_paths 100 -path_type summary -file timing.log -verbose
+| Design       : rv32i_system
+| Device       : 7a15t-cpg236
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+----------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Startpoint                     Endpoint                       Slack(ns)     
+----------------------------------------------------------------------------
+CORE/src_a_reg[31]/C           CORE/src_b_reg[20]/R           3.132         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[21]/R           3.132         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[22]/R           3.132         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[23]/R           3.132         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[24]/R           3.132         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[25]/R           3.132         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[26]/R           3.132         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[27]/R           3.132         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[28]/R           3.132         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[29]/R           3.132         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[30]/R           3.132         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[31]/R           3.132         
+CORE/src_a_reg[31]/C           CORE/alu_control_reg[0]/CE     3.511         
+CORE/src_a_reg[31]/C           CORE/alu_control_reg[1]/CE     3.511         
+CORE/src_a_reg[31]/C           CORE/alu_control_reg[2]/CE     3.511         
+CORE/src_a_reg[31]/C           CORE/alu_control_reg[3]/CE     3.511         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[0]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[10]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[11]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[12]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[13]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[14]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[15]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[16]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[17]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[18]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[19]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[1]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[20]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[21]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[22]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[23]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[24]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[25]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[26]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[27]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[28]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[29]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[2]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[30]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[31]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[3]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[4]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[5]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[6]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[7]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[8]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_a_reg[9]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[0]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[10]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[11]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[12]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[13]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[14]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[15]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[16]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[17]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[18]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[19]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[1]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[20]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[21]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[22]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[23]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[24]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[25]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[26]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[27]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[28]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[29]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[2]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[30]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[31]/CE          3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[3]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[4]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[5]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[6]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[7]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[8]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/src_b_reg[9]/CE           3.656         
+CORE/src_a_reg[31]/C           CORE/FSM_onehot_state_reg[0]/CE
+                                                              4.148         
+CORE/src_a_reg[31]/C           CORE/FSM_onehot_state_reg[10]/CE
+                                                              4.148         
+CORE/src_a_reg[31]/C           CORE/FSM_onehot_state_reg[11]/CE
+                                                              4.148         
+CORE/src_a_reg[31]/C           CORE/FSM_onehot_state_reg[1]/CE
+                                                              4.148         
+CORE/src_a_reg[31]/C           CORE/FSM_onehot_state_reg[2]/CE
+                                                              4.148         
+CORE/src_a_reg[31]/C           CORE/FSM_onehot_state_reg[3]/CE
+                                                              4.148         
+CORE/src_a_reg[31]/C           CORE/FSM_onehot_state_reg[4]/CE
+                                                              4.148         
+CORE/src_a_reg[31]/C           CORE/FSM_onehot_state_reg[5]/CE
+                                                              4.148         
+CORE/src_a_reg[31]/C           CORE/FSM_onehot_state_reg[6]/CE
+                                                              4.148         
+CORE/src_a_reg[31]/C           CORE/FSM_onehot_state_reg[7]/CE
+                                                              4.148         
+CORE/src_a_reg[31]/C           CORE/FSM_onehot_state_reg[8]/CE
+                                                              4.148         
+CORE/src_a_reg[31]/C           CORE/FSM_onehot_state_reg[9]/CE
+                                                              4.148         
+CORE/src_a_reg[31]/C           CORE/rs1_reg[0]/CE             4.161         
+CORE/src_a_reg[31]/C           CORE/rs1_reg[0]_rep/CE         4.161         
+CORE/src_a_reg[31]/C           CORE/rs1_reg[1]/CE             4.161         
+CORE/src_a_reg[31]/C           CORE/rs1_reg[1]_rep/CE         4.161         
+CORE/src_a_reg[31]/C           CORE/rs1_reg[2]/CE             4.161         
+CORE/src_a_reg[31]/C           CORE/rs1_reg[3]/CE             4.161         
+CORE/src_a_reg[31]/C           CORE/rs1_reg[4]/CE             4.161         
+CORE/src_a_reg[31]/C           CORE/rs2_reg[0]/CE             4.164         
+
+
+

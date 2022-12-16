@@ -1,0 +1,62 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (lin64) Build 3526262 Mon Apr 18 15:47:01 MDT 2022
+| Date         : Wed Dec 14 10:47:11 2022
+| Host         : emma-Latitude-5491 running 64-bit Ubuntu 22.04.1 LTS
+| Command      : report_design_analysis -file design_analysis.log -verbose -show_all
+| Design       : rv32i_system
+| Device       : xc7a15t
+| Design State : Synthesized
+-------------------------------------------------------------------------------------
+
+Report Design Analysis
+
+Table of Contents
+-----------------
+1. Setup Path Characteristics 1-1
+
+1. Setup Path Characteristics 1-1
+---------------------------------
+
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+|      Characteristics      |                                                                  Path #1                                                                 |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+| Requirement               | 16.275                                                                                                                                   |
+| Path Delay                | 12.530                                                                                                                                   |
+| Logic Delay               | 2.412(20%)                                                                                                                               |
+| Net Delay                 | 10.118(80%)                                                                                                                              |
+| Clock Skew                | -0.145                                                                                                                                   |
+| Slack                     | 3.132                                                                                                                                    |
+| Timing Exception          |                                                                                                                                          |
+| Clock Uncertainty         | 0.036                                                                                                                                    |
+| Bounding Box Size         | 0% x 0%                                                                                                                                  |
+| Clock Region Distance     | NA                                                                                                                                       |
+| Fixed Loc                 | 0                                                                                                                                        |
+| Fixed Route               | 0                                                                                                                                        |
+| Hold Fix Detour           | 0                                                                                                                                        |
+| Combined LUT Pairs        | 1                                                                                                                                        |
+| Clock Relationship        | Safely Timed                                                                                                                             |
+| Clock Delay Group         | Same Clock                                                                                                                               |
+| Logic Levels              | 13                                                                                                                                       |
+| Routes                    | NA                                                                                                                                       |
+| Logical Path              | FDRE/C-(78)-LUT6-(7)-LUT6-(4)-LUT6-(1)-LUT5-(3)-LUT6-(131)-RAMS64E-(1)-MUXF7-MUXF8-LUT6-(1)-LUT6-(17)-LUT6-(5)-LUT3-(2)-LUT6-(12)-FDRE/R |
+| Start Point Clock         | clk                                                                                                                                      |
+| End Point Clock           | clk                                                                                                                                      |
+| DSP Block                 | None                                                                                                                                     |
+| RAM Registers             |                                                                                                                                          |
+| IO Crossings              | 0                                                                                                                                        |
+| Config Crossings          | 0                                                                                                                                        |
+| SLR Crossings             | 0                                                                                                                                        |
+| PBlocks                   | 0                                                                                                                                        |
+| High Fanout               | 131                                                                                                                                      |
+| Cumulative Fanout         | 262                                                                                                                                      |
+| Dont Touch                | 0                                                                                                                                        |
+| Mark Debug                | 0                                                                                                                                        |
+| Start Point Pin Primitive | FDRE/C                                                                                                                                   |
+| End Point Pin Primitive   | FDRE/R                                                                                                                                   |
+| Start Point Pin           | src_a_reg[31]/C                                                                                                                          |
+| End Point Pin             | src_b_reg[20]/R                                                                                                                          |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+* Bounding box calculated as % of dimensions for the target device (188, 300)
+
+

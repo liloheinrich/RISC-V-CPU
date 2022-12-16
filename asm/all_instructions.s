@@ -1,12 +1,3 @@
-
-lw x3, 8(x1)
-jal ra, label_a
-addi x1, x0, 16
-
-label_a: addi x1, x0, 17
-
-
-
 lb x1, 0(x0)
 lh x2, 14(x1)
 lw x3, 8(x1)
